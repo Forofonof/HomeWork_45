@@ -9,9 +9,11 @@ class Program
         const string CommandServeСustomers = "2";
         const string CommandExit = "3";
 
+        bool isWork = true;
+
         Store store = new Store();
 
-        while (true)
+        while (isWork)
         {
             Console.WriteLine($"{CommandCreateQueue} - Создать очередь.\n{CommandServeСustomers} - Обслужить клиентов.\n{CommandExit} - Выход.");
             string userInput = Console.ReadLine();
@@ -27,7 +29,8 @@ class Program
                     break;
 
                 case CommandExit:
-                    return;
+                    isWork = false;
+                    break;
 
                 default:
                     Console.WriteLine("Ошибка! Неверная команда.");
@@ -107,7 +110,7 @@ class Store
 
         for (int i = 0; i < countProduct; i++)
         {
-            products.Add(_products[_random.Next(0, _products.Count - 1)]);
+            products.Add(_products[_random.Next(_products.Count - 1)]);
         }
         return new Сustomer(countMoney, products);
     }
@@ -138,8 +141,6 @@ class Сustomer
         {
             RemoveUnaffordableProducts();
         }
-
-        Console.ReadKey();
     }
 
     private void ShowProductCart()
