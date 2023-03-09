@@ -93,6 +93,7 @@ class Store
         int maximumNumber = 50;
 
         int priceProduct = _random.Next(minimumNumber, maximumNumber);
+
         return priceProduct;
     }
 
@@ -112,6 +113,7 @@ class Store
         {
             products.Add(_products[_random.Next(_products.Count - 1)]);
         }
+
         return new Сustomer(countMoney, products);
     }
 }
